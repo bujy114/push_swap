@@ -11,15 +11,6 @@
 /* ************************************************************************** */
 
 #include "push_swap.h"
-/*
-void    lstaddback(char **argv, )
-{
-    t_stack_node    *x;
-
-    *x->next = NULL;
-
-}
-*/
 
 int check(char **argv)
 {
@@ -42,7 +33,7 @@ int check(char **argv)
         }
         i++;
     }
-    return (1);
+    return (i > 0);
 }
 
 void free_thenums(char **thenums)
@@ -70,14 +61,16 @@ int *makeint(char **thenums, int *i)
     {
         (*i)++;
     }
-    num = malloc((*i)*sizeof(int));
+    if (*i == 0)
+        return (NULL);
+    num = malloc((*i)*sizeof(*num));
     if (!num)
-        return (0);
+        return (NULL);
     *i = 0;
     while(thenums[*i])
     {
-        test = ft_atoi(thenums[*i]);
-        if (test == 2147483649)
+        test = ft_atol(thenums[*i]);
+        if (test == -2147483649 || test == 2147483648)
         {
             free(num);
             return (NULL);
@@ -105,5 +98,11 @@ int main(int argc, char **argv)
     }
     num = makeint(thenums, &size);
     free_thenums(thenums);
+    if (!num)
+    {
+        write(2, "Error\n", 6);
+        return (1);
+    }
+    free(num);
     return (0);
 }

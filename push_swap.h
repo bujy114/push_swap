@@ -12,6 +12,8 @@
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
+#include <stdlib.h>
+#include <unistd.h>
 
 typedef struct s_stack_node
 {
@@ -23,5 +25,7 @@ typedef struct s_stack_node
 
 char	**ft_split(char const *s, char c);
 int	    ft_isdigit(int c);
+long	ft_atol(const char *nptr);
+
 
 #endif

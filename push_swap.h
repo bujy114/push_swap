@@ -15,17 +15,20 @@
 #include <stdlib.h>
 #include <unistd.h>
 
-typedef struct s_stack_node
+typedef struct s_stack
 {
-    int                 nbr;
-    int                 index;
-    struct s_stack_node *next;
-    struct s_stack_node *prev;
-} t_stack_node;
+    int     *values;
+    int     size;
+    int     capacity;
+}   t_stack;
 
 char	**ft_split(char const *s, char c);
 int	    ft_isdigit(int c);
 long	ft_atol(const char *nptr);
+char	*ft_strjoin(char const *s1, char const *s2);
+size_t	ft_strlen(const char *c);
+char	*join_args(int argc, char **argv);
+
 
 
 #endif
